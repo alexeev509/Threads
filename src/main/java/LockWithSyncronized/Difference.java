@@ -32,5 +32,9 @@ public class Difference {
         System.out.println("out from first lock");
         lock2.unlock();
         System.out.println("out from second lock");
+
+        //RentrantLock can return a lot of Conditions-> a lot of wait sets and blocked sets;
+        // if in condtructor renntrantlock - false - the next thread in lock - can be any of threads from blocked set.
+        //But if - true - the next thread = first thread, which appeared in blocked set
     }
 }
