@@ -4,6 +4,7 @@ import akka.actor.ActorRef;
 import akka.actor.Props;
 import akka.actor.UntypedAbstractActor;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,7 +28,10 @@ public class MRContainer extends UntypedAbstractActor {
     public void onReceive(Object message) throws Throwable {
         Object[] msgArr = (Object[]) message;
         String command = (String) msgArr[0];
-        String key = "0";//this isnt right; this is temporally
+        String key = null;//this isnt right; this is temporally
+        if (Arrays.asList("put", "get", "remove", "get/result").contains(command)) {
+            key = (String) msgArr[1];
+        }
         switch (command) {
             case "put":
             case "remove":

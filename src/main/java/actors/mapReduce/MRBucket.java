@@ -3,6 +3,7 @@ package actors.mapReduce;
 import akka.actor.ActorRef;
 import akka.actor.UntypedAbstractActor;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -14,7 +15,10 @@ public class MRBucket extends UntypedAbstractActor {
     public void onReceive(Object message) throws Throwable {
         Object[] msgArr = (Object[]) message;
         String command = (String) msgArr[0];
-        String key = "0";//this isnt right; this is temporally
+        String key = null;
+        if (Arrays.asList("put", "get", "remove", "get/result").contains(command)) {
+            key = (String) msgArr[1];
+        }
         switch (command) {
             case "put":
                 Object value = msgArr[2];
@@ -34,7 +38,6 @@ public class MRBucket extends UntypedAbstractActor {
                 Mapper mapper = (Mapper) msgArr[2];
                 Reducer reducer = (Reducer) msgArr[3];
                 Object initElem = msgArr[4];
-
                 Object result = initElem;
                 for (Map.Entry entry : (Set<Map.Entry>) data.entrySet()) {
                     result = reducer.reduce(result, mapper.map(entry));

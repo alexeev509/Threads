@@ -13,14 +13,15 @@ import static akka.actor.ActorRef.noSender;
 
 public class MRMain {
     public static void main(String[] args) throws IOException {
-        ActorSystem system = ActorSystem.create("demo");
+        ActorSystem system = ActorSystem.create("demo2");
         ActorRef container = system.actorOf(Props.create(MRContainer.class), "container");
         ActorRef callback = system.actorOf(Props.create(Callback.class), "callback");
 
         container.tell(msg("put", "keyA", "valueA"), noSender());
         container.tell(msg("put", "keyB", "valueB"), noSender());
         container.tell(msg("put", "keyC", "valueC"), noSender());
-        container.tell(msg("put", "keyD", "valueD"), noSender());
+        container.tell(msg("put", "keyD", "valD"), noSender());
+        container.tell(msg("put", "keyF", "valF"), noSender());
 
         Mapper<Map.Entry<String, String>, Integer> mapper = arg ->
                 arg.getValue().length() == arg.getKey().length() ? 1 : 0;
