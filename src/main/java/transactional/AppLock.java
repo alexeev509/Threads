@@ -74,7 +74,9 @@ public class AppLock {
     }
 
     private static void transfer(final AccountLock from, final AccountLock to, final int amount) {
-        //Ordering with id
+        //Ordering with id. we don't want to see such picture: fst.lock.lock(); 1-2 2-3 3-1
+        //1-2 2-3 1-3  ->this is norm variant because if 1st will be blocked we will do
+        //1-2 or 1-3, but not both
         AccountLock fst = (from.id < to.id) ? from : to;
         AccountLock snd = (from.id >= to.id) ? from : to;
 //        With such realization we can have deadlock:
