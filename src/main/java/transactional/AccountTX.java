@@ -5,6 +5,7 @@ import org.multiverse.api.references.TxnInteger;
 
 import static org.multiverse.api.StmUtils.abort;
 
+//https://www.codeflow.site/ru/article/java-multiverse-stm
 public class AccountTX {
     private final TxnInteger balance;
 
