@@ -1,4 +1,4 @@
-package latchMonitor;
+package latchMonitorTransaction;
 
 //CountDownLatch - аналог
 public class LatchMonitor {

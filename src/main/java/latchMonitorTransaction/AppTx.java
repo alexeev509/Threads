@@ -1,13 +1,12 @@
-package latchMonitor;
+package latchMonitorTransaction;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class AppMonitor {
-
+public class AppTx {
     public static void main(String[] args) {
-        final LatchMonitor latch = new LatchMonitor();
+        final LatchTx latch = new LatchTx();
 
         new Thread(new Runnable() {
             @Override
