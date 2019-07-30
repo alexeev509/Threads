@@ -34,6 +34,7 @@ public class AppStack {
             atomic(new Runnable() {
                 @Override
                 public void run() {
+                    //Idea of twu queues (we dont have such in Concurrent)
                     if (!stack0.isEmpty() && !stack1.isEmpty()) {
                         System.out.println(stack0.pop() + ":" + stack1.pop());
                     } else {
