@@ -3,7 +3,7 @@ package forkjoinpool;
 import java.util.stream.LongStream;
 import java.util.stream.Stream;
 
-//Все строится на ForkJoin в паралелльных стримах 
+//Все строится на ForkJoin в паралелльных стримах
 public class App03_stream_0 {
     public static void main(String[] args) {
         {
