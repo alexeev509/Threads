@@ -5,6 +5,7 @@ package jcsp.eratos;
 
 import java.util.Arrays;
 
+//Bad, because we can make mistake and have arrayindexofboundexaption
 public class ErathosthenesSeq {
     public static void main(String[] args) {
         int N = 1000;
